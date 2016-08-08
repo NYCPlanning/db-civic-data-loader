@@ -1,0 +1,15 @@
+{
+  "url": "http://www.rita.dot.gov/bts/sites/rita.dot.gov.bts/files/AdditionalAttachmentFiles/airports.zip",
+  "saveFile": "usdot_facilities_airports.zip",
+  "load": "shp2pgsql",
+  "loadFiles": [
+    {
+      "file":"airports.shp",
+      "table": "usdot_facilities_airports"
+    }
+  ],
+  "shp2pgsql": [ 
+    "-d",
+    "-s 2263:4326"
+  ] 
+}

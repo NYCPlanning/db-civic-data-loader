@@ -1,0 +1,15 @@
+{
+  "url": "https://data.cityofnewyork.us/api/file_data/wpYHtRhvWqCGKQ9N91VgCogV5dYDIv643DFR-Nte8ss?filename=DEP_GREEN_INFRASTRUCTURE.shp.zip",
+  "saveFile": "dep_greeninfrastructure.zip",
+  "load": "shp2pgsql",
+  "loadFiles": [
+    {
+      "file":"DEP_GREEN_INFRASTRUCTURE.shp",
+      "table": "dep_greeninfrastructure"
+    }
+  ],
+  "shp2pgsql": [ 
+    "-d",
+    "-s 2263:4326"
+  ] 
+}

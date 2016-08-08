@@ -1,0 +1,34 @@
+{
+  "url": "https://raw.githubusercontent.com/NYCPlanning/nyc-gtfs2geojson/master/geojson.zip",
+  "table": "mta_busstops",
+  "load": "ogr2ogr",
+  "loadFiles": [
+    {
+      "file": "bronx/stops.geojson",
+      "table": "bronxstops"
+    },
+    {
+      "file": "manhattan/stops.geojson",
+      "table": "manhattanstops"
+    },
+    {
+      "file": "queens/stops.geojson",
+      "table": "queensstops"
+    },
+    {
+      "file": "statenisland/stops.geojson",
+      "table": "statenislandstops"
+    },
+    {
+      "file": "brooklyn/stops.geojson",
+      "table": "brooklynstops"
+    },
+    {
+      "file": "busco/stops.geojson",
+      "table": "buscostops"
+    }
+  ],
+  "ogr2ogr": [ 
+    "-f"
+  ] 
+}

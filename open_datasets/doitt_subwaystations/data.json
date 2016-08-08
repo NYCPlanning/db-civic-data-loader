@@ -1,0 +1,15 @@
+{
+  "url": "https://nycpublicdata.carto.com/api/v2/sql?filename=doitt_subwaystations.zip&q=SELECT%20*%20FROM%20nyc_subway_station&format=shp",
+  "saveFile": "doitt_subwaystations.zip",
+  "load": "shp2pgsql",
+  "loadFiles": [
+    {
+      "file":"doitt_subwaystations.shp",
+      "table": "doitt_subwaystations"
+    }
+  ],
+  "shp2pgsql": [ 
+    "-d",
+    "-s 4326:4326"
+  ] 
+}
