@@ -4,7 +4,7 @@ A node.js CLI tool for automated dataset loading into the PostgreSQL/PostGIS, ma
 
 ##Structure
 
-`datasetName` should be unique, and takes the form of {agency}_{dataset}, e.g. `dcp_mappluto`.  Each dataset should have a folder with its datasetName in the `datasets` directory.  When executing the CLI tool, the datasetName is passed in as an argument, and the script searches for `{datasetName}/data.json` and then runs accordingly.
+`datasetName` should be unique, and takes the form of {agency}_{dataset}, e.g. `dcp_mappluto`.  Each dataset should have a folder with its datasetName in the `open_datasets` directory.  When executing the CLI tool, the datasetName is passed in as an argument, and the script searches for `{datasetName}/data.json` and then runs accordingly.
 
 ##data.json
 
@@ -41,6 +41,15 @@ A node.js CLI tool for automated dataset loading into the PostgreSQL/PostGIS, ma
 - Enter `node loader {command} {datasetName}` in the terminal, like `node loader install dcp_boroboundaries`
 - Watch the magic happen!
 
+##Commands
+
+The workflows are divided into 3 parts: `get`, `push`, and `after`.  
+
+- `get` downloads the file to the temp directory and unzips if necessary
+- `push` grabs the file(s) from the temp directory and loads it(them) into the database
+- `after` always runs after `push` and checks for `after.sql` in the dataset directory.  If it exists, it will execute the sql
+- `install` does both `get` and `push`
+
 
 ##Loading Types:
 
@@ -51,7 +60,7 @@ A node.js CLI tool for automated dataset loading into the PostgreSQL/PostGIS, ma
 `ogr2ogr` - Useful for loading geojson files.
 
 ##create.sql
-If loading csvs, this is simply a CREATE TABLE statement that is run before loading the data.
+If loading csvs, this is simply a CREATE TABLE statement that is run before loading the data.  In the future we could use ogr2ogr to do column type guessing if people want it.
 ```
 -- create table to load csv from the nyc open data portal
 DROP TABLE IF EXISTS nysopwdd_facilities_providers;
@@ -95,14 +104,6 @@ If loading csvs, this is the copy statement with the source file and the destina
 After `Push` completes, the script will check for the existence of `after.sql` in the dataset directory.  If it exists, it will execute it with `psql`.  This can be used for post-processing in PostgreSQL, such as combining the 5 mappluto tables into one and deleting the source tables.
 
 
-##Commands
-
-The workflows are divided into 3 parts: `get`, `push`, and `after`.  
-
-- `get` downloads the file to the temp directory and unzips if necessary
-- `push` grabs the file(s) from the temp directory and loads it(them) into the database
-- `after` always runs after `push` and checks for `after.sql` in the dataset directory.  If it exists, it will execute the sql
-- `install` does both `get` and `push`
 
 ##Non-public data
 
