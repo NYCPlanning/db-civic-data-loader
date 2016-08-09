@@ -4,13 +4,14 @@
   "load": "shp2pgsql",
   "loadFiles":[
     {
-      "file":"building_0316.shp",
+      "file":"building_0716.shp",
       "table": "doitt_buildingfootprints"
     }
   ], 
   "saveFile" : "doitt_buildingfootprints.zip",
   "shp2pgsql": [ 
     "-d",
-    "-s 2263:4326"
+    "-s 2263:4326",
+    "-W \"latin1\""
   ] 
 }

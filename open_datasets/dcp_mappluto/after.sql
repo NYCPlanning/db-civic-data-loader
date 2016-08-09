@@ -16,4 +16,4 @@ DROP TABLE qnmappluto;
 DROP TABLE bkmappluto;
 DROP TABLE simappluto;
 
-UPDATE dcp_mappluto SET geom = ST_GeometryN(st_makevalid(geom),1) WHERE ST_GeometryType(ST_makevalid(geom)) = 'ST_GeometryCollection';
+UPDATE dcp_mappluto SET geom = ST_Setsrid(ST_GeometryN(st_makevalid(geom),1),4326) WHERE ST_GeometryType(ST_makevalid(geom)) = 'ST_GeometryCollection';
