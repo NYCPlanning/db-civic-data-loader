@@ -28,7 +28,8 @@ A node.js CLI tool for automated dataset loading into the PostgreSQL/PostGIS, ma
 }
 ```
 - `url` - the download link, grabbed when using the `Get` method.
-- `load` - which loading type to use.  `shp2pgsql` is the only one working right now and easily imports shapefiles. Future types will include 'psql' with specified SQL file stored in the dataset's directory, and `ogr2ogr`, etc.  We will add new types as needed.
+- `saveFile` - optional - the name of the file to save after a Get.  (useful when the downloaded file has a generic name or does not have the correct file extension)
+- `load` - which loading type to use.  `shp2pgsql`, `csv`, and `ogr2ogr` are the available options, see "Loading Types" below.
 - `loadFiles` - an array of files to be loaded when using the `Push` method.  Most datasets will just have one, but some, like pluto, have a single file to download but many files to upload.  
 - `shp2pgsql` - an array of arguments for the shp2pgsql command.  Only used if `load` is set to 'shp2pgsql'
 
@@ -56,7 +57,7 @@ The workflows are divided into 2 parts: `get`, `push`.
 
 `csv` - For CSVs.  If this type is chosen, you must also provide `create.sql` and `copy.sql` in the dataset's directory.
 
-`ogr2ogr` - Useful for loading geojson files.
+`ogr2ogr` - Useful for loading geojson files.  File should be a geojson FeatureCollection.
 
 ##create.sql
 If loading csvs, this is simply a CREATE TABLE statement that is run before loading the data.  In the future we could use ogr2ogr to do column type guessing if people want it.
@@ -98,11 +99,10 @@ If loading csvs, this is the copy statement with the source file and the destina
 `\COPY nysopwdd_facilities_providers FROM './temp/nysopwdd_facilities_providers/nysopwdd_facilities_providers.csv' CSV HEADER;`
 
 
-
-
 ##Non-public data
 
-The loader will search for a matching dataset in both the `open_datasets` and `other_datasets` directories.  `open_datasets` is included in this repo, but the contents of `other_datasets` is ignored by git, so you can use it to create loading configurations for your non-publicly accessible data.
+The loader will search for a matching dataset in both the `open_datasets` and `other_datasets` directories.  `open_datasets` is included in this repo, but the contents of `other_datasets` is ignored by git, so you can use it to create loading configurations for your non-publicly accessible data.  
+
 
 TODO: 
 - lots of error handling
