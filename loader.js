@@ -35,10 +35,7 @@ config.dataset_directory = dataset_directory;
   if (command=='install') {
     Get(config)
       .then(function(){
-        Push(config)
-          .then(function(){
-            After(config);
-          })
+        Push(config);
       });
   }
 
@@ -51,7 +48,7 @@ config.dataset_directory = dataset_directory;
   if (command=='push') {
     Push(config)
       .then(function(){
-        After(config);
+        console.log('about to run after')
       })
   }
 } else {

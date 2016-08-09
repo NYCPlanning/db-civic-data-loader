@@ -43,11 +43,10 @@ A node.js CLI tool for automated dataset loading into the PostgreSQL/PostGIS, ma
 
 ##Commands
 
-The workflows are divided into 3 parts: `get`, `push`, and `after`.  
+The workflows are divided into 2 parts: `get`, `push`.  
 
 - `get` downloads the file to the temp directory and unzips if necessary
 - `push` grabs the file(s) from the temp directory and loads it(them) into the database
-- `after` always runs after `push` and checks for `after.sql` in the dataset directory.  If it exists, it will execute the sql
 - `install` does both `get` and `push`
 
 
@@ -99,10 +98,6 @@ If loading csvs, this is the copy statement with the source file and the destina
 `\COPY nysopwdd_facilities_providers FROM './temp/nysopwdd_facilities_providers/nysopwdd_facilities_providers.csv' CSV HEADER;`
 
 
-##after.sql
-
-After `Push` completes, the script will check for the existence of `after.sql` in the dataset directory.  If it exists, it will execute it with `psql`.  This can be used for post-processing in PostgreSQL, such as combining the 5 mappluto tables into one and deleting the source tables.
-
 
 
 ##Non-public data
@@ -112,3 +107,4 @@ The loader will search for a matching dataset in both the `open_datasets` and `o
 TODO: 
 - lots of error handling
 - add all the datas!
+- add an "after" handler that can execute SQL after the push is successful the data have been loaded.

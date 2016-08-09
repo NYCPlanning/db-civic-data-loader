@@ -8,12 +8,13 @@ SELECT * FROM qnmappluto
 UNION ALL
 SELECT * FROM bkmappluto
 UNION ALL
-SELECT * FROM simappluto;
+SELECT * FROM simappluto
+;
 
-DROP TABLE mnmappluto;
-DROP TABLE bxmappluto;
-DROP TABLE qnmappluto;
-DROP TABLE bkmappluto;
-DROP TABLE simappluto;
+-- -- DROP TABLE mnmappluto;
+-- -- DROP TABLE bxmappluto;
+-- -- DROP TABLE qnmappluto;
+-- -- DROP TABLE bkmappluto;
+-- -- DROP TABLE simappluto;
 
-UPDATE dcp_mappluto SET geom = ST_Setsrid(ST_GeometryN(st_makevalid(geom),1),4326) WHERE ST_GeometryType(ST_makevalid(geom)) = 'ST_GeometryCollection';
+-- UPDATE dcp_mappluto SET geom = ST_GeometryN(st_makevalid(geom),1) WHERE ST_GeometryType(ST_makevalid(geom)) = 'ST_GeometryCollection';
