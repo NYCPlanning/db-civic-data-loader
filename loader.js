@@ -47,7 +47,7 @@ config.dataset_directory = dataset_directory;
   if (command=='push') {
     Push(config)
       .then(function(){
-        console.log('Done')
+        console.log('Done Pushing Dataset')
       })
   }
 } else {
