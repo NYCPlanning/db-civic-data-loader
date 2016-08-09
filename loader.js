@@ -2,7 +2,6 @@ var fs=require('fs');
 
 var Get = require('./lib/get.js');
 var Push = require('./lib/push.js');
-var After = require('./lib/after.js');
 
 //get the command that the user passed in
 var command = process.argv[2];
@@ -48,7 +47,7 @@ config.dataset_directory = dataset_directory;
   if (command=='push') {
     Push(config)
       .then(function(){
-        console.log('about to run after')
+        console.log('Done')
       })
   }
 } else {
