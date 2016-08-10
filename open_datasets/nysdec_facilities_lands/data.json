@@ -11,6 +11,6 @@
   "saveFile":"nysdec_facilities_lands.zip",
   "shp2pgsql": [ 
     "-d",
-    "-s 2263:4326"
+    "-s 26918:4326"
   ] 
 }
