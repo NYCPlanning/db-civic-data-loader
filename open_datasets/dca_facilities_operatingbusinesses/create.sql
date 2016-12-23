@@ -15,5 +15,7 @@ CREATE TABLE dca_facilities_operatingbusinesses (
 	Address_ZIP text,
 	Contact_Phone_Number text,
 	Address_Borough text,
-	Detail text
+	Detail text,
+	Latitude text,
+	Longitude text
 )
