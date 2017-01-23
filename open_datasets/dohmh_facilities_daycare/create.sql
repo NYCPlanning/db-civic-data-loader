@@ -14,7 +14,6 @@ CREATE TABLE dohmh_facilities_daycare (
 	Age_Range text,
 	Maximum_Capacity text,
 	Day_Care_ID text,
-	Certified_to_Administer_Medication text,
 	Program_Type text,
 	Facility_Type text,
 	Child_Care_Type text,
